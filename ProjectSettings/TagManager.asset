@@ -7,6 +7,7 @@ TagManager:
   - kayak
   - firstcam
   - secondcam
+  - ground
   layers:
   - Default
   - TransparentFX

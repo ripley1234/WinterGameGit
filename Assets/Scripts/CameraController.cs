@@ -12,6 +12,14 @@ public class CameraController : MonoBehaviour
     public GameObject ballLauncher;
     public Transform ballLaunchertransform;
 
+    public GameObject Target;
+    public Transform spawnPoint;
+
+
+    private void Awake()
+    {
+        InvokeRepeating("SpawnDelay",5,5);
+    }
 
     private void Start()
     {
@@ -30,9 +38,6 @@ public class CameraController : MonoBehaviour
                 {
                     currentView = views[1];
                     StartCoroutine(delay());
-
-                    //hit.collider.gameObject now refers to the 
-                    //cube under the mouse cursor if present
                 }
             
                 if (hit.collider.tag=="secondcam")
@@ -41,33 +46,21 @@ public class CameraController : MonoBehaviour
                 }
             }
         }
+
+       
+
+
+
+    }
+
+    
+    void SpawnDelay()
+    {
         
+            Instantiate(Target, spawnPoint.position, Quaternion.Euler(16.65f,90f,0f));
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            currentView = views[0];
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            currentView = views[1];
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            currentView = views[2];
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            currentView = views[3];
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            currentView = views[4];
-        }
-
+        
+        
     }
 
     IEnumerator delay()

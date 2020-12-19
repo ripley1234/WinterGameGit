@@ -49,8 +49,17 @@ public class SnowballLauncher : MonoBehaviour
         if (other.gameObject.tag=="kayak")
         {
             Debug.Log("HiT!!!");
+            FindObjectOfType<EnemyMovement>().anim.SetBool("death",true);
+            FindObjectOfType<EnemyMovement>().go = true;
+            Destroy(other.gameObject,3f);
             Destroy(this.transform.parent.gameObject);
             
+        }
+
+        if (other.gameObject.tag == "ground")
+        {
+            Debug.Log("MISSED!!");
+            Destroy(this.transform.parent.gameObject);
         }
     }
 

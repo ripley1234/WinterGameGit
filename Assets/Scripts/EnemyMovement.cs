@@ -11,11 +11,11 @@ public class EnemyMovement : MonoBehaviour
     private int waypointIndex = 0;
     public bool go = false;
     
-    private Animator anim;
+    public Animator anim;
     
     void Start()
     {
-         anim=GameObject.Find("Target").GetComponent<Animator>();
+         anim=GetComponent<Animator>();
          transform.position = waypoints[waypointIndex].transform.position;
     }
 

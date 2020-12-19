@@ -8,6 +8,7 @@ TagManager:
   - firstcam
   - secondcam
   - ground
+  - thirdcam
   layers:
   - Default
   - TransparentFX

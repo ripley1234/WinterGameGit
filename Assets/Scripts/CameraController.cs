@@ -44,6 +44,10 @@ public class CameraController : MonoBehaviour
                 {
                     currentView = views[2];
                 }
+                if (hit.collider.tag=="thirdcam")
+                {
+                    currentView = views[3];
+                }
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ public class SnowballLauncher : MonoBehaviour
         
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Input.mousePosition.x,Input.mousePosition.y,target.transform.position.z));
             RaycastHit hit;
-            if (Physics.Raycast(ray,out hit,100))
+            if (Physics.Raycast(ray,out hit))
             {
                  desiredpos = new Vector3(hit.point.x,hit.point.y,target.position.z);
                 
@@ -42,7 +43,17 @@ public class SnowballLauncher : MonoBehaviour
             DrawPath ();
         }
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag=="kayak")
+        {
+            Debug.Log("HiT!!!");
+            Destroy(this.transform.parent.gameObject);
+            
+        }
+    }
+
 
     void Launch() {
         Physics.gravity = Vector3.up * gravity;
